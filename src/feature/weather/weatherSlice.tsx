@@ -10,9 +10,12 @@ const initialState: WeatherState = {
   status: 'initiated',
 }
 
-export const fetchWeatherData = createAsyncThunk('weather/fetchWeatherData', async () => {
-  return getWeatherDataByLocation('London,uk')
-})
+export const fetchWeatherData = createAsyncThunk(
+  'weather/fetchWeatherData',
+  async (location: string) => {
+    return getWeatherDataByLocation(location)
+  }
+)
 
 export const weatherSlice = createSlice({
   name: 'weather',

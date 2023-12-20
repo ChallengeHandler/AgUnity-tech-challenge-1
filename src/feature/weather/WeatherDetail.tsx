@@ -1,18 +1,12 @@
 
-import React, { FC, useEffect, ReactNode } from 'react'
+import { FC } from 'react'
 import type { RootState } from '../../app/store'
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { fetchWeatherData } from './weatherSlice'
+import { useAppSelector } from '../../app/hooks'
 import styles from './weather.module.css'
 
 type WeatherDetailProps = {}
 export const WeatherDetail: FC<WeatherDetailProps> = () => {
   const { status, data } = useAppSelector((state: RootState) => state.weather)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(fetchWeatherData())
-  }, [])
 
   return (
     <div className={styles["weather-detail"]}>
