@@ -1,9 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, SerializedError } from '@reduxjs/toolkit'
 import { getWeatherDataByLocation } from '../../service/weather'
 
 export interface WeatherState {
   status: LoadingStatus,
-  data?: WeatherData
+  data?: WeatherData,
+  error?: SerializedError
 }
 
 const initialState: WeatherState = {
@@ -33,6 +34,7 @@ export const weatherSlice = createSlice({
       })
       .addCase(fetchWeatherData.rejected, (state, action) => {
         state.status = 'failed'
+        state.error = action.error
       })
   }
 })

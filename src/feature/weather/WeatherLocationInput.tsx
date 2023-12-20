@@ -1,6 +1,7 @@
 import { FC, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../../app/hooks'
 import { fetchWeatherData } from './weatherSlice'
+import styles from './weather.module.css'
 
 type WeatherLocationInputProps = {}
 export const WeatherLocationInput: FC<WeatherLocationInputProps> = ({}) => {
@@ -13,9 +14,9 @@ export const WeatherLocationInput: FC<WeatherLocationInputProps> = ({}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input value={location} onChange={e => setLocation(e.target.value)} placeholder="enter the city name" />
-      <button type='submit'>Search</button>
+    <form className={styles['weather-location-form']} onSubmit={handleSubmit}>
+      <input className={styles['weather-location-input']} value={location} onChange={e => setLocation(e.target.value)} placeholder="enter the city name" />
+      <button className={styles['weather-location-submit-btn']} type='submit'>Search</button>
     </form>
   )
 }
