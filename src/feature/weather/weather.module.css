@@ -1,0 +1,12 @@
+.weather-detail {
+  border-width: 1px;
+  border-color: #DDD;
+  border-radius: 2em;
+  border-style: solid;
+  padding: 1em; }
+
+  .weather-detail .weather-location, .weather-detail .weather-data {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em; }

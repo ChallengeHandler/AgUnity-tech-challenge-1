@@ -3,12 +3,11 @@ import { getWeatherDataByLocation } from '../../service/weather'
 
 export interface WeatherState {
   status: LoadingStatus,
-  data: Partial<WeatherData>
+  data?: WeatherData
 }
 
 const initialState: WeatherState = {
   status: 'initiated',
-  data: {}
 }
 
 export const fetchWeatherData = createAsyncThunk('weather/fetchWeatherData', async () => {
@@ -23,6 +22,7 @@ export const weatherSlice = createSlice({
     builder
       .addCase(fetchWeatherData.pending, (state, action) => {
         state.status = 'loading'
+        state.data = undefined
       })
       .addCase(fetchWeatherData.fulfilled, (state, action) => {
         state.status = 'succeeded'
@@ -30,7 +30,6 @@ export const weatherSlice = createSlice({
       })
       .addCase(fetchWeatherData.rejected, (state, action) => {
         state.status = 'failed'
-        state.data = {}
       })
   }
 })
