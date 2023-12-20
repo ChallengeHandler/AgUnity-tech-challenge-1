@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { getWeatherDataByLocation } from '../../service/weather'
 
 export interface WeatherState {
   status: LoadingStatus,
@@ -12,8 +12,7 @@ const initialState: WeatherState = {
 }
 
 export const fetchWeatherData = createAsyncThunk('weather/fetchWeatherData', async () => {
-  const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=dffc877b2e7274f0b739016ba89475f5`)
-  return res.data
+  return getWeatherDataByLocation('London,uk')
 })
 
 export const weatherSlice = createSlice({

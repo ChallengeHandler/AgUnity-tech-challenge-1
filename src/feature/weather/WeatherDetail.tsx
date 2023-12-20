@@ -10,7 +10,6 @@ export const WeatherDetail: FC<WeatherDetailProps> = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    console.log('here')
     dispatch(fetchWeatherData())
   }, [])
 
